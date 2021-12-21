@@ -1,0 +1,17 @@
+buildType:
+  default: debug
+  description: Build type
+  choices:
+    debug:
+      short: Debug
+      long: Debug
+      buildType: Debug
+    release:
+      short: Release
+      long: Release
+      buildType: Release
+    asan:
+      short: Asan
+      long: Asan
+      buildType: Asan
+

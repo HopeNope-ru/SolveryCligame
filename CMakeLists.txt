@@ -1,0 +1,18 @@
+cmake_minimum_required(VERSION 3.0.0)
+project(SolveryCliGame VERSION 0.1.0)
+
+set(CMAKE_CXX_STANDARD 17)
+# When you are ready
+# add_compile_options(-Wall -Wextra -pedantic -Werror) 
+if (CMAKE_BUILD_TYPE STREQUAL "Debug")
+  add_compile_options(-g) 
+elseif(CMAKE_BUILD_TYPE STREQUAL "Asan")
+  add_compile_options(-g -fsanitize=address) 
+  add_link_options(-fsanitize=address)
+endif()
+find_package(Curses REQUIRED)
+file(GLOB SRC src/implementation/*.cpp)
+add_executable(SolveryCliGame main.cpp ${SRC})
+target_include_directories(SolveryCliGame PUBLIC ${CURSES_INCLUDE_DIR})
+target_include_directories(SolveryCliGame PUBLIC src/headers)
+target_link_libraries(SolveryCliGame ${CURSES_LIBRARY})
